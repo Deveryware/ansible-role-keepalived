@@ -1,0 +1,22 @@
+---
+# .ansible-lint
+
+profile: production
+
+exclude_paths:
+  - .gitlab-ci.yml
+
+parseable: false
+
+quiet: false
+
+verbosity: 0
+
+use_default_rules: true
+
+skip_list:
+  - 'schema'
+  - 'yaml[line-length]'
+  - 'name[template]'
+
+offline: true
