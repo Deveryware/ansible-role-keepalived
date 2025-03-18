@@ -1,33 +1,33 @@
 ---
 - name: Import OS-specific variables.
-  include_vars: '{{ item }}'
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
     - '{{ ansible_distribution }}.yml'
     - '{{ ansible_os_family }}.yml'
 
 - name: Ensure keepalived and its dependencies are installed.
-  package:
+  ansible.builtin.package:
     name: "{{ keepalived_packages }}"
     state: present
-  when: keepalived_install
+  when: keepalived_install | bool
 
 - name: Ensure keepalived command line arguments are defined.
-  template:
+  ansible.builtin.template:
     src: keepalived.default
     dest: /etc/default/keepalived
-    mode: 0644
+    mode: "0644"
   notify: Restart keepalived
 
 - name: Ensure keepalived.conf is installed.
-  template:
+  ansible.builtin.template:
     src: keepalived.conf
     dest: /etc/keepalived/keepalived.conf
-    mode: 0644
+    mode: "0644"
   notify: Restart keepalived
 
 - name: Ensure keepalived is started.
-  service:
+  ansible.builtin.service:
     name: keepalived
     state: started
-    enabled: yes
+    enabled: true

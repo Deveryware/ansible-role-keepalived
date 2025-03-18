@@ -3,16 +3,16 @@ galaxy_info:
   role_name: keepalived
   author: Tristan Le Guern
   description: keepalived configuration without arm twisting.
-  company: Deveryware
+  company: ChapsVision
   license: ISC
-  min_ansible_version: 2.1
+  min_ansible_version: "2.1"
   platforms:
-  - name: Debian
-    versions:
-      - buster
-      - stretch
-      - bullseye
+    - name: Debian
+      versions:
+        - "buster"
+        - "bullseye"
+        - "bookworm"
   galaxy_tags:
-  - keepalived
-  - vrrp
+    - keepalived
+    - vrrp
 dependencies: []
